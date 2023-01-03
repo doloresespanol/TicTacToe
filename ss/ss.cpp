@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 
 using namespace std;
 
@@ -29,7 +29,7 @@ void board() {
 void player_move() {
     cout << endl << "Player " << player << " turn:" << endl;
     cin >> spot;
-    if (t[spot - 1] == "X" || t[spot - 1] == "O") {
+    if (t[spot - 1] == "X" || t[spot - 1] == "O" || spot > 9 || spot <= 0) {
         cout << "Invalid move" << endl;
     }
     else {
@@ -65,15 +65,18 @@ void player_move() {
         default: "Invalid move";
         }
         if (t[0] != "_" && t[0] == t[3] && t[0] == t[6] || t[1] != "_" && t[1] == t[4] && t[1] == t[7] || t[2] != "_" && t[2] == t[5] && t[2] == t[8]) {
-            cout << endl << "Player " << player << " Wins!" << endl << endl;
+        system("clear");
+        cout << endl << "Player " << player << " Wins!" << endl << endl;
             wygrana = 1;
         }
         else if (t[0] != "_" && t[0] == t[4] && t[0] == t[8] || t[2] != "_" && t[2] == t[4] && t[2] == t[6]) {
-            cout << endl << "Player " << player << " Wins!" << endl << endl;
+        system("clear");
+        cout << endl << "Player " << player << " Wins!" << endl << endl;
             wygrana = 1;
         }
         else if (t[0] != "_" && t[0] == t[1] && t[0] == t[2] || t[3] != "_" && t[3] == t[4] && t[3] == t[5] || t[6] != "_" && t[6] == t[7] && t[6] == t[8]) {
-            cout << endl << "Player " << player << " Wins!" << endl << endl;
+        system("clear");
+        cout << endl << "Player " << player << " Wins!" << endl << endl;
             wygrana = 1;
         }
         for (int i = 0;i < 9; i++) {
@@ -85,6 +88,7 @@ void player_move() {
             draw = 0;
         }
         else {
+            system("clear");
             cout << "It's a Draw!" << endl << endl;
             wygrana = 1;
         }
@@ -101,6 +105,7 @@ int main()
     cout << "Tic Tac Toe" << endl;
     create_board();
     while (wygrana==0 ) {
+        system("clear");
         board();
         player_move();
     }
